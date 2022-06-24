@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <title>React *</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <div id="testFunction"></div>
+        <!-- Remember to change type to babel -->
+        <script type="text/babel">
+                let heading = React.createElement(
+                    "h1",
+                    null,
+                    "Getting started with React"
+                );
+                let ul = React.createElement(
+                    "ul",
+                    { style: {color:"blue"}},
+                    React.createElement("li", null, "Monday"),
+                    React.createElement("li", null, "Tuesday"),
+                    React.createElement("li", null, "Wednesday")
+                );
+                let first = "Testing";
+                let second = "This";
+                let third = "Babel";
+                ReactDOM.render(
+                    //ul,
+                   //heading,
+                   <ul>
+                        <li>{first}</li>
+                        <li>{second}</li>
+                        <li>{third.toUpperCase()}</li>
+                    </ul>,
+                    document.getElementById("root")
+                );
+
+                //Function React components
+                function Header(props) {
+                    return (
+                        <header>
+                            <h1>{props.name}'s Kitchen</h1>
+                        </header>
+                    );
+                }
+
+                function Main(props) {
+                    return (
+                        <section>
+                            <p>We serve the most {props.adjective} food around</p>
+                            <ol>
+                                {props.dishes.map((dish) => (
+                                    <li key={dish.id}>{dish.title}</li>
+                                ))}
+                            </ol>
+                            <img height={200} src="https://www.justonecookbook.com/wp-content/uploads/2020/08/Mochi-Ice-Cream-8680-I.jpg"
+                                alt="Mochi Ice Cream Variety Flavours" />
+                        </section>
+                    );
+                }
+
+                function Footer(props) {
+                    return (
+                        <footer>
+                            <p>Copyright {props.year}</p>
+                        </footer>
+                    );
+                }
+
+                const dishes = [
+                    "Mochi",
+                    "Dango",
+                    "Kimchi"
+                ];
+
+                const dishObjects = dishes.map(
+                    (dish, i) => ({
+                        id: i,
+                        title: dish,
+                    })
+                );
+
+                //combin Header and Main
+                function App() {
+                    return (
+                        <React.Fragment>
+                            <Header name="Daya" />
+                            <Main adjective="gorgeous" dishes={dishObjects} />
+                            <Footer year={new Date().getFullYear()} />
+                        </React.Fragment>
+                    );
+                }
+                ReactDOM.render(
+                    <App />,
+                    document.getElementById("testFunction")
+                );
+        </script>
+    </body>
+</html>
