@@ -1,12 +1,14 @@
 import './App.css';
 //hooks useState, useEffect
-import { useState, useEffect, useReducer } from 'react';
+import { useState, useEffect, useReducer, useRef } from 'react';
 
 
 const [first, second, third] = ["Tokyo", "China", "Korea"];
 
 console.log(first);
 console.log(second);
+
+
 
 //library from index.js
 function App({library}) {
@@ -23,6 +25,23 @@ function App({library}) {
   //creating checkbox toggle
   const [checked, setChecked] = useReducer((checked) => !checked, false);
 
+  //for color picker function
+  const txtTitle = useRef();
+  const hexColor = useRef();
+
+  console.log(txtTitle);
+  const submit = (e) => {
+    e.preventDefault(); //prevent the page from refreshing
+    const title = txtTitle.current.value;
+    const color = hexColor.current.value;
+    alert(`${title}, ${color}`);
+    //reset and clear the inputs
+    txtTitle.current.value = "";
+    hexColor.current.value = "";
+  }
+
+  
+
   return (
     <div className="App">
       <h1>Hello from {library}</h1>
@@ -37,7 +56,17 @@ function App({library}) {
       <input type="checkbox" value={checked}
         onChange={setChecked} />
       <label>{checked ? "checked" : "not checked"}</label>
+
+      <form onSubmit={submit}>
+        <input ref={txtTitle} type="text" placeholder="color title..." />
+        <input ref={hexColor} type="color" />
+        <button>ADD</button>
+      </form>
+
+      
     </div>
+
+    
   );
 }
 

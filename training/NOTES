@@ -3,3 +3,8 @@ JSX
 Use Babel to translate for JSX tags
 
 Remember to run npm install
+
+choose form library
+Ex: React Hook Form, usehooks.com
+
+GraphQL use to handle requests and queries
