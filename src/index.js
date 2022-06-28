@@ -1,13 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Custom from '../training/custom';
-import API from '../training/apiSet';
-import GQL from '../training/graphQL';
-import reportWebVitals from './reportWebVitals';
+import { App, About, Contact, History } from './App';
+import Custom from './custom';
+import API from './apiSet';
+import GQL from './graphQL';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+ReactDOM.render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/about" element={<About />}>
+        <Route path="/history" element={<History />}/>
+      </Route>
+      <Route path="/contact" element={<Contact />} />
+    </Routes>
+  </BrowserRouter>,
+  document.getElementById('root')
+);
+
+/*const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App library="React"/>
@@ -15,9 +29,6 @@ root.render(
     <API />
     <GQL />
   </React.StrictMode>
-);
+); */
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

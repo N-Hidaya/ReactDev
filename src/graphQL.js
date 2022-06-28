@@ -65,22 +65,24 @@ function GQL() {
         return <pre>{JSON.stringify(error)}</pre>;
     if (!data) return null;
     return (
-        <div>
+        <div className='App'>
             {data.data.allLifts.map((lift) => {
+                return (
                 <Lift
                 name={lift.name}
                 elevationGain={lift.elevationGain}
                 status={lift.status}
                 />
+                );
             })}
 
-        <List
-        data={tahoe_peaks}
-        renderEmpty={<p>This list is empty</p>}
-        renderItem={(item) => (
+            <List
+            data={tahoe_peaks}
+            renderEmpty={<p>This list is empty</p>}
+            renderItem={(item) => (
             <>{item.name} - {item.elevation} ft.</>
-        )}
-        />
+            )}
+            />
         </div>
        
     );

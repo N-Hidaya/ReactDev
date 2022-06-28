@@ -3,8 +3,18 @@ JSX
 Use Babel to translate for JSX tags
 
 Remember to run npm install
+Install node
+
+To generate a project/folder for new app with Create React App
+npx create-react-app foldername
 
 choose form library
 Ex: React Hook Form, usehooks.com
 
 GraphQL use to handle requests and queries
+
+Install React Router v6 for moving folders to folders
+npm install react-router-dom@6
+
+Lastly, you may publish your project in Netlify
+Then share the link in your resume
