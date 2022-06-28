@@ -7,7 +7,7 @@ import API from './apiSet';
 import GQL from './graphQL';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-
+/*
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
@@ -20,15 +20,25 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root')
 );
-
-/*const root = ReactDOM.createRoot(document.getElementById('root'));
+*/
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<App />} />
+    <Route path="/about" element={<About />}>
+      
+    </Route>
+    <Route path="/contact" element={<Contact />} />
+  </Routes>
+</BrowserRouter>
+); 
+
+/*<React.StrictMode>
     <App library="React"/>
     <Custom />
     <API />
     <GQL />
-  </React.StrictMode>
-); */
+  </React.StrictMode> */
 
 
